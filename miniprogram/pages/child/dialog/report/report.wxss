@@ -1,0 +1,10 @@
+.pa-offend-switch {
+    margin-top: 12rpx;
+}
+
+.pa-report-submit {
+    margin-top: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

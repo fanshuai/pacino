@@ -1,0 +1,109 @@
+{
+  "pages": [
+    "pages/bar/ever/ever",
+    "pages/bar/scan/scan",
+    "pages/bar/mine/mine",
+    "pages/review/review",
+    "pages/child/dialog/dialog",
+    "pages/child/dialog/touch/msg/msg",
+    "pages/child/dialog/touch/call/call",
+    "pages/child/dialog/other/other",
+    "pages/child/dialog/remark/remark",
+    "pages/child/dialog/report/report",
+    "pages/child/symbol/symbol",
+    "pages/child/symbol/view/view",
+    "pages/child/symbol/strike/strike",
+    "pages/child/symbol/selfdom/selfdom",
+    "pages/child/symbol/title/title",
+    "pages/child/profile/profile",
+    "pages/child/profile/bio/bio",
+    "pages/child/profile/name/name",
+    "pages/child/profile/qruser/qruser",
+    "pages/child/profile/avatar/avatar",
+    "pages/child/profile/gender/gender",
+    "pages/child/phones/phones",
+    "pages/child/phones/add/add",
+    "pages/child/phones/unbind/unbind",
+    "pages/child/setting/setting",
+    "pages/child/setting/about/about",
+    "pages/child/setting/device/device",
+    "pages/child/setting/privacy/privacy",
+    "pages/child/setting/terms/terms"
+  ],
+  "tabBar": {
+    "custom": false,
+    "color": "#353535",
+    "selectedColor": "#0F9D58",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/bar/ever/ever",
+        "iconPath": "asset/bar/chat-o.png",
+        "selectedIconPath": "asset/bar/chat.png",
+        "text": "道我"
+      },
+      {
+        "pagePath": "pages/bar/scan/scan",
+        "iconPath": "asset/bar/scan.png",
+        "selectedIconPath": "asset/bar/enlarge.png",
+        "text": "扫一扫"
+      },
+      {
+        "pagePath": "pages/bar/mine/mine",
+        "iconPath": "asset/bar/user-o.png",
+        "selectedIconPath": "asset/bar/manager.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-goods-action": "@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index"
+  },
+  "window": {
+    "backgroundColor": "#F2F2F2",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "道我",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 5000,
+    "downloadFile": 5000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "位置信息将用于提供更便捷的服务"
+    }
+  },
+  "debug": true,
+  "darkmode": false,
+  "sitemapLocation": "sitemap.json"
+}

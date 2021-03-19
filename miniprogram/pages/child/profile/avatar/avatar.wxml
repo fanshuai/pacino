@@ -1,0 +1,17 @@
+<view class="pa-avatar">
+    <view class="pa-avatar-item">
+        <van-image fit="cover" image-class="pa-avatar-radius" width="360rpx" height="360rpx" src="{{avatar}}" use-loading-slot>
+            <van-loading slot="loading" type="spinner" vertical />
+        </van-image>
+    </view>
+    <view class="pa-avatar-item">
+        <block wx:if="{{loading}}">
+            <van-loading type="spinner" color="#555555" />
+        </block>
+        <block wx:else>
+            <van-uploader accept="image" max-count="1" sizeType="{{['compressed']}}" file-list="{{fileList}}" deletable="{{false}}" bind:after-read="afterRead" />
+        </block>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

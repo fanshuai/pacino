@@ -1,0 +1,11 @@
+<van-cell-group border="{{false}}">
+    <van-field type="textarea" maxlength="50" value="{{bio}}" placeholder="50个字以内" border="{{false}}"
+               bind:change="onChange" bind:confirm="submit" autosize="{{autosize}}" hold-keyboard show-word-limit focus />
+</van-cell-group>
+<view class="pa-bio-submit">
+    <view style="width: 680rpx;">
+        <van-button icon="star-o" type="primary" bind:tap="submit" plain block>完成</van-button>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

@@ -1,0 +1,25 @@
+<view class="pa-safe-bottom">
+    <van-swipe-cell wx:for="{{devices}}" wx:key="tid" wx:for-index="idx" right-width="100">
+        <van-cell-group border="{{false}}">
+            <van-cell border="{{idx < devices.length - 1}}" size="large"
+                      title="{{item.type}}" value-class="{{item.current ? 'pa-device-current' : ''}}"
+                      value="{{item.current ? '当前设备' : item.diff + '活跃'}}" use-label-slot center>
+                <view slot="label">
+                    <view>设备: {{item.name}}</view>
+                    <view style="font-size: small;">
+                        <text>登录日期: </text>
+                        <text class="pa-font-mono">{{item.signed}}</text>
+                    </view>
+                </view>
+            </van-cell>
+        </van-cell-group>
+        <view slot="right" wx:if="{{item.current}}" bind:tap="logout">
+            <text>退出登录</text>
+        </view>
+        <view slot="right" wx:else data-tid="{{item.tid}}" bind:tap="logoutDevice">
+            <text>注销登录</text>
+        </view>
+    </van-swipe-cell>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#F49000" />
+<van-toast id="van-toast" />

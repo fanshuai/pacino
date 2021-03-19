@@ -1,0 +1,30 @@
+<view class="pa-safe-bottom">
+    <view wx:if="{{phones.length === 0}}" style="width: 750rpx; background-color: white;">
+        <van-divider contentPosition="center" customStyle="padding:50rpx;" dashed>暂无手机号</van-divider>
+    </view>
+    <view wx:else style="width: 750rpx;">
+        <van-swipe-cell wx:for="{{phones}}" wx:key="tid" wx:for-index="idx" right-width="{{item.main ? 0 : 100}}">
+            <van-cell-group border="{{false}}">
+                <van-cell border="{{idx < phones.length - 1}}" size="large" data-key="{{item.key}}" data-fmt="{{item.fmt}}" data-main="{{item.main}}"
+                          title-class="pa-font-mono" title="{{item.fmt}}" value="{{item.main ? '主手机号' : ''}}" bind:tap="setMainPhone">
+                    <van-icon slot="right-icon" wx:if="{{!item.main}}" name="ascending" />
+                </van-cell>
+            </van-cell-group>
+            <navigator slot="right" wx:if="{{!item.main}}" url="{{pages.PPhonesUnbind}}?key={{item.key}}&fmt={{item.fmt}}" hover-class="none">
+                <view>解除绑定</view>
+            </navigator>
+        </van-swipe-cell>
+    </view>
+    <view class="pa-add-phone">
+        <navigator wx:if="{{phones.length < limit}}" url="{{pages.PPhonesAdd}}" hover-class="none">
+            <view style="width: 680rpx;">
+                <van-button icon="phone-o" type="primary" plain block>
+                    <text>添加手机号</text>
+                </van-button>
+            </view>
+        </navigator>
+        <view class="pa-add-phone-word">最多可绑定{{limit}}个手机号</view>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

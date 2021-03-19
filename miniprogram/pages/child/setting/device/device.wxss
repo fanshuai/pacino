@@ -1,0 +1,19 @@
+page {
+    background-color: white;
+}
+
+.pa-device-current {
+    color: var(--color-green)!important;
+}
+
+.van-swipe-cell__right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 200rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    background-color: var(--color-red);
+}

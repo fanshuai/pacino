@@ -1,0 +1,5 @@
+<view class="pa-loading-center">
+    <van-loading type="spinner" vertical>{{LoadingMsg}}</van-loading>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

@@ -1,0 +1,3 @@
+.pa-contact-mail {
+    text-transform: uppercase;
+}

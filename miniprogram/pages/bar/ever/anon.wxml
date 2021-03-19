@@ -1,0 +1,24 @@
+<view wx:if="{{initialized}}" class="pa-anon-convert">
+    <view class="pa-anon-login">
+        <view wx:if="{{!loading}}" style="width: 500rpx;">
+            <van-divider contentPosition="center" customStyle="padding:50rpx;" dashed>请先登录后查看</van-divider>
+            <van-button icon="wechat" type="primary" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllow" block round> 微信登录</van-button>
+        </view>
+        <van-loading wx:else type="spinner" vertical>{{LoadingMsg}}</van-loading>
+    </view>
+    <view class="pa-anon-func">
+        <view class="pa-anon-func-desc">
+            <view class="pa-anon-func-slogan pa-color-theme">扫码联系物主</view>
+            <view class="pa-color-gray-55">便捷高效 保护隐私 安全可控</view>
+        </view>
+        <view class="pa-mpa-store pa-color-green" bind:tap="goStoreMPA">
+            <van-icon name="shop" size="32rpx" />
+            <text>{{AppName}}小商店</text>
+            <text>发现有趣周边</text>
+            <van-icon name="like" size="36rpx" />
+        </view>
+    </view>
+</view>
+<view wx:else class="pa-anon-convert">
+    <van-loading type="spinner" vertical>加载中...</van-loading>
+</view>

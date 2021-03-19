@@ -1,0 +1,61 @@
+<wxs src="../../../cores/comm.wxs" module="comm" />
+<block wx:if="{{!rsmAllowed && logged && (appUser.symbols > 0)}}">
+    <van-notice-bar left-icon="volume-o" mode="closeable" scrollable="{{false}}" color="#F49000" text="订阅提醒消息，并选择总是保持允许？" bind:tap="reqSubscribeMsg" />
+</block>
+<van-cell-group border="{{false}}">
+    <van-cell size="large" url="{{logged ? pages.PProfile : ''}}" is-link="{{logged}}" center use-label-slot clickable>
+        <view wx:if="{{logged}}" class="pa-label-user" slot="label">
+            <van-image fit="cover" width="160rpx" height="160rpx" src="{{appUser.avatar}}" use-loading-slot round>
+                <van-loading slot="loading" type="spinner" />
+            </van-image>
+            <view class="pa-user-name pa-name-break">{{appUser.name}}</view>
+            <text class="pa-user-gender pa-gender-1" wx:if="{{appUser.gender === 1}}">♂</text>
+            <text class="pa-user-gender pa-gender-2" wx:if="{{appUser.gender === 2}}">♀</text>
+        </view>
+        <button wx:else class="pa-btn-reset pa-label-user" slot="label" hover-class="none" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllow">
+            <van-image fit="cover" width="160rpx" height="160rpx" src="{{anonAvatar}}" use-loading-slot round>
+                <van-loading slot="loading" type="spinner" />
+            </van-image>
+            <view class="pa-user-name pa-name-break">点击登录</view>
+        </button>
+    </van-cell>
+    <van-cell wx:if="{{logged}}" size="large" icon="qr" title="用户码" value-class="pa-font-mono" value="{{appUser.codef}}" bind:tap="goQRUser" is-link clickable />
+    <button wx:else class="pa-btn-reset pa-wxopen-cell-btn" hover-class="none" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllow" data-url="{{pages.PProfileQRUser}}">
+        <van-cell size="large" icon="qr" is-link clickable>
+            <view slot="title" style="text-align:left;">用户码</view>
+            <text class="pa-font-mono">*** ****</text>
+        </van-cell>
+    </button>
+    <van-cell wx:if="{{logged && phone}}" border="{{false}}" size="large" icon="phone-o" title="手机号" value-class="pa-font-mono" value="{{phone}}" bind:tap="goPhones" is-link clickable />
+    <button wx:elif="{{logged}}" class="pa-btn-reset pa-wxopen-cell-btn" hover-class="none" open-type="getPhoneNumber" bind:getphonenumber="getPhoneNumber">
+        <van-cell border="{{false}}" size="large" icon="phone-o" is-link clickable>
+            <view slot="title" style="text-align:left;">手机号</view>
+            <view class="pa-get-wxphone-icon {{appUser.symbols > 0 ? 'pa-color-yellow' : 'pa-color-gray-55'}}">
+                <van-icon name="wechat" />
+                <text style="margin-left:10rpx;">获取</text>
+            </view>
+        </van-cell>
+    </button>
+    <button wx:else class="pa-btn-reset pa-wxopen-cell-btn" hover-class="none" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllow">
+        <van-cell border="{{false}}" size="large" icon="phone-o" is-link clickable>
+            <view slot="title" style="text-align:left;">手机号</view>
+            <text class="pa-font-mono">****</text>
+        </van-cell>
+    </button>
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell wx:if="{{logged}}" size="large" icon="points" title="场景码" value-class="pa-font-mono" value="{{appUser.symbols}}" bind:tap="goSymbol" is-link clickable />
+    <button wx:else class="pa-btn-reset pa-wxopen-cell-btn" hover-class="none" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllow" data-url="{{pages.PSymbol}}">
+        <van-cell size="large" icon="points" is-link clickable>
+            <view slot="title" style="text-align:left;">场景码</view>
+            <text class="pa-font-mono">**</text>
+        </van-cell>
+    </button>
+    <van-cell size="large" icon="shop-o" title="{{appName}}小商店" value="发现更多" bind:tap="goStoreMPA" is-link clickable />
+    <van-cell border="{{false}}" size="large" icon="scan" title="已收到商品" value="扫码绑定" bind:tap="goScan" is-link clickable />
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top pa-safe-bottom">
+    <van-cell border="{{false}}" size="large" icon="setting-o" title="设置" url="{{pages.PSetting}}" is-link clickable />
+</van-cell-group>
+<van-dialog id="van-dialog" bind:getphonenumber="getPhoneNumber" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

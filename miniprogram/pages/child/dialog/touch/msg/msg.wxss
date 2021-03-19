@@ -1,0 +1,12 @@
+.pa-msg-submit {
+    margin-top: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pa-msg-limit {
+    margin-top: 100rpx;
+    text-align: center;
+    font-size: small;
+}

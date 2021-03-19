@@ -1,0 +1,87 @@
+.pa-call {
+    height: 100%;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.pa-call-info {
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-gray-35);
+}
+.pa-call-other-name {
+    font-weight: bold;
+    margin-top: 20rpx;
+    font-size: 36rpx;
+}
+.pa-call-phone-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 200rpx;
+    width: 750rpx;
+}
+.pa-call-phone-add {
+    width: 320rpx;
+}
+
+.pa-call-flow {
+    margin-top: 50rpx;
+    text-align: center;
+}
+.pa-call-flow-one {
+    font-size: 28rpx;
+    margin-bottom: 10rpx;
+    color: var(--color-gray-55);
+}
+.pa-call-flow-two {
+    height: 50rpx;
+    font-size: 28rpx;
+    color: var(--color-gray-55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pa-call-word {
+    font-size: 26rpx;
+    color: var(--color-green);
+    margin-top: 20rpx;
+}
+
+.pa-call-submit {
+    width: 420rpx;
+}
+
+.pa-call-extra {
+    height: 120rpx;
+    margin-top: 50rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pa-call-price {
+    margin-top: 10rpx;
+    font-weight: 500;
+    font-size: 28rpx;
+    color: var(--color-gray-55);
+}
+
+.pa-call-end-410 {
+    color: var(--color-yellow);
+}
+.pa-call-end-420 {
+    color: var(--color-yellow);
+}
+.pa-call-end-500 {
+    color: var(--color-green);
+}
+

@@ -1,0 +1,18 @@
+<van-cell-group border="{{false}}">
+    <van-cell size="large" url="{{pages.PProfileAvatar}}" center use-label-slot is-link clickable>
+        <view class="pa-user-avatar" slot="label">
+            <view class="pa-avatar-title">头像</view>
+            <van-image fit="cover" image-class="pa-avatar-radius" width="60" height="60" src="{{appUser.avatar}}" use-loading-slot>
+                <van-loading slot="loading" type="spinner" vertical />
+            </van-image>
+        </view>
+    </van-cell>
+    <van-cell size="large" icon="contact" title="名字" value-class="pa-cell-value-break" value="{{appUser.name}}" url="{{pages.PProfileName}}" is-link clickable />
+    <van-cell border="{{false}}" size="large" icon="circle" title="性别" value="{{appUser.genderd}}" url="{{pages.PProfileGender}}" is-link clickable />
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell border="{{false}}" size="large" title="个性签名" value-class="pa-cell-value-break" value="{{appUser.bio}}"
+              url="{{pages.PProfileBio}}" label="用户码查找可见" is-link clickable center />
+</van-cell-group>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

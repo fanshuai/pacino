@@ -1,0 +1,69 @@
+<view class="pa-dialog-view">
+    <view wx:if="{{conv.block}}" class="pa-notice-bar" bind:tap="goOther">已屏蔽，对方暂时无法与我通话。</view>
+    <view wx:elif="{{!rsmAllowed}}" class="pa-notice-bar" bind:tap="reqSubscribeMsg">订阅提醒消息，并选择总是保持允许？</view>
+    <view class="pa-dialog-content">
+        <scroll-view scroll-y="true" scroll-into-view="{{scrollTo}}" class="pa-dialog-scroll" enable-back-to-top>
+            <view class="pa-dialog-more">
+                <van-divider contentPosition="center" customStyle="padding:50rpx;">
+                    <view wx:if="{{msgAmt.count > msgAmt.limit}}">仅显示最近 <text class="pa-font-mono">{{msgAmt.limit}}</text> 条消息</view>
+                    <view wx:elif="{{msgAmt.count > 0}}">已显示全部 <text class="pa-font-mono">{{msgAmt.count}}</text> 条消息</view>
+                    <view wx:else>加载中...</view>
+                </van-divider>
+            </view>
+            <view class="pa-dialog-msgs">
+                <view wx:for="{{msgs}}" wx:key="tid" id="{{'ID-' + item.tid}}">
+                    <view wx:if="{{item.timed}}" class="pa-dialog-time">
+                        <text class="pa-font-mono pa-dialog-time-text">{{item.timer}}</text>
+                    </view>
+                    <view wx:if="{{item.type === 1}}" class="pa-dialog-trigger">
+                        <text class="pa-dialog-trigger-text pa-font-mono">{{item.self ? '我' : '对方'}}{{item.memo}}</text>
+                    </view>
+                    <view wx:else class="pa-dialog-item pa-ditem-{{item.self ? 'self' : 'other'}}">
+                        <view class="pa-dialog-icon">
+                            <van-image wx:if="{{item.self}}" image-class="pa-dialog-img" width="80rpx" height="80rpx" fit="cover" src="{{item.avatar}}" use-loading-slot>
+                                <van-loading slot="loading" type="spinner" vertical />
+                            </van-image>
+                            <van-image wx:else image-class="pa-dialog-img" width="80rpx" height="80rpx" fit="cover" src="{{item.avatar}}" bind:tap="goOther" use-loading-slot>
+                                <van-loading slot="loading" type="spinner" vertical />
+                            </van-image>
+                        </view>
+                        <view class="pa-dialog-info">
+                            <view class="pa-dialog-box">
+                                <view class="pa-dialog-box-inner">
+                                    <text class="pa-dialog-type pa-call-reach-{{item.reach}}" wx:if="{{item.type === 5}}">[通话]</text>
+                                    <text class="pa-dialog-word">{{item.memo}}</text>
+                                    <block wx:if="{{item.self && (item.type === 2)}}">
+                                        <text class="pa-dialog-reach {{item.readed ? 'pa-color-green' : 'pa-color-yellow'}}">
+                                            <block>[{{item.readed ? '已读' : '未读'}}]</block>
+                                        </text>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <van-goods-action custom-class="pa-goods-action">
+        <van-goods-action-icon bind:tap="goOther">
+            <view slot="icon" class="pa-action-icon">
+                <van-icon name="user-circle-o" size="50rpx" />
+            </view>
+        </van-goods-action-icon>
+        <van-goods-action-button bind:tap="goMsg" color="linear-gradient(to right, #A9DFBF, #2ECC71)">
+            <view class="pa-action-btn">
+                <van-icon name="chat" size="36rpx" />
+                <text class="pa-action-txt">发消息</text>
+            </view>
+        </van-goods-action-button>
+        <van-goods-action-button custom-class="pa-action-btn" bind:tap="goCall" color="linear-gradient(to right, #52BE80, #0F9D58)">
+            <view class="pa-action-btn">
+                <van-icon name="phone" size="36rpx" />
+                <text class="pa-action-txt">打电话</text>
+            </view>
+        </van-goods-action-button>
+    </van-goods-action>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

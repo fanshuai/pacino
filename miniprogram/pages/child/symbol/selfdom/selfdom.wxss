@@ -1,0 +1,6 @@
+.pa-selfdom-submit {
+    margin-top: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

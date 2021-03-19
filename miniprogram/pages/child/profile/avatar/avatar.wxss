@@ -1,0 +1,15 @@
+.pa-avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.pa-avatar-item {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

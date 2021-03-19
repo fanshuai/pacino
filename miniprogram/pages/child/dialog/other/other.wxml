@@ -1,0 +1,28 @@
+<van-cell-group border="{{false}}">
+    <van-cell size="large" use-label-slot>
+        <view class="pa-label-user" slot="label">
+            <van-image image-class="pa-avatar-radius" width="120rpx" height="120rpx" fit="cover" src="{{other.avatar}}" use-loading-slot>
+                <van-loading slot="loading" type="spinner" />
+            </van-image>
+            <view class="pa-user-name pa-name-break">{{other.name}}</view>
+            <text class="pa-user-gender pa-gender-1" wx:if="{{other.gender === 1}}">♂</text>
+            <text class="pa-user-gender pa-gender-2" wx:if="{{other.gender === 2}}">♀</text>
+        </view>
+    </van-cell>
+    <van-cell border="{{false}}" size="large" icon="qr" title="用户码" value-class="pa-font-mono" value="{{other.codef}}" />
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell size="large" icon="edit" title="备注" value="{{conv.remark}}" value-class="pa-cell-value-break"
+              url="{{pages.PDialogRemark}}?convid={{conv.convid}}&remark={{conv.remark}}&name={{conv.name}}" is-link clickable />
+    <van-cell border="{{false}}" size="large" icon="phone-o" title="通话次数" value-class="pa-font-mono" value="{{conv.called}}" />
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell border="{{false}}" size="large" title="屏蔽对方" label="拒接对方来电" center>
+        <van-switch custom-class="pa-block-switch" checked="{{block}}" size="24px" active-color="#F49000" bind:change="changeBlock" />
+    </van-cell>
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell border="{{false}}" size="large" icon="warning-o" title="举报滥用行为" url="{{pages.PDialogReport}}?convid={{conv.convid}}" is-link clickable />
+</van-cell-group>
+<van-dialog id="van-dialog" confirm-button-color="#F49000" />
+<van-toast id="van-toast" />

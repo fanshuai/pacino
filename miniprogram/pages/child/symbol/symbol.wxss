@@ -1,0 +1,4 @@
+.pa-add-symbol {
+    width: 100%;
+    padding-top: 50rpx;
+}

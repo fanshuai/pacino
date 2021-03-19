@@ -1,0 +1,21 @@
+<van-cell-group border="{{false}}">
+    <van-cell size="large" title="软件版本" value-class="pa-font-mono" value="{{appInfo.Version}}" clickable />
+    <van-cell size="large" title="隐私权政策" url="{{pages.PSettingPrivacy}}" is-link clickable />
+    <van-cell border="{{false}}" size="large" title="服务协议" url="{{pages.PSettingTerms}}" is-link clickable />
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell size="large">
+        <text class="pa-font-bold">© </text>
+        <text class="pa-font-mono">{{year}}</text>
+        <text> 上海访道网络有限公司</text>
+    </van-cell>
+    <van-cell border="{{false}}" size="large" value="{{appInfo.IcpB}}" />
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell size="large">
+        <text>Do have faith in what you're doing</text>
+    </van-cell>
+    <van-cell border="{{false}}" size="large" icon="like-o">
+        <text>我为人人 人人为我</text>
+    </van-cell>
+</van-cell-group>

@@ -1,0 +1,8 @@
+.pa-loading-center {
+    width: 750rpx;
+    height: 750rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

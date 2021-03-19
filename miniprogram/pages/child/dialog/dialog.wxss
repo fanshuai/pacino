@@ -1,0 +1,188 @@
+.pa-dialog-view {
+    height: 100%;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.pa-dialog-content {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /*noinspection CssInvalidFunction*/
+    padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+.pa-dialog-scroll {
+    height: 100%;
+}
+.pa-dialog-more {
+    width: 750rpx;
+}
+.pa-dialog-msgs {
+    padding-bottom: 30rpx;
+}
+.pa-dialog-time {
+    width: 750rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15rpx;
+    padding-top: 20rpx;
+}
+.pa-dialog-time-text {
+    color: var(--color-gray-35);
+    font-size: 26rpx;
+}
+.pa-dialog-trigger {
+    width: 750rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15rpx;
+    padding-top: 20rpx;
+}
+.pa-dialog-trigger-text {
+    color: var(--color-gray-35);
+    background-color: rgba(178, 178, 178, 0.3);
+    padding: 6rpx 12rpx;
+    border-radius: 6rpx;
+    font-size: 28rpx;
+}
+.pa-dialog-item {
+    width: 750rpx;
+    display: flex;
+    min-height: 110rpx;
+    background-color: var(--color-background);
+}
+.pa-ditem-self {
+    flex-direction: row-reverse;
+}
+.pa-ditem-other {
+    flex-direction: row;
+}
+.pa-dialog-icon {
+    width: 120rpx;
+    height: 110rpx;
+}
+.pa-dialog-img {
+    margin: 15rpx 20rpx;
+    border-radius: 12rpx;
+}
+.pa-dialog-info {
+    width: 510rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-background);
+}
+.pa-ditem-self > .pa-dialog-info {
+    align-items: flex-end;
+}
+.pa-ditem-other > .pa-dialog-info {
+    align-items: flex-start;
+}
+.pa-dialog-box {
+    position: relative;
+    margin: 15rpx 0;
+    min-width: 40rpx;
+    min-height: 80rpx;
+    border-radius: 12rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pa-dialog-box-inner {
+    color: var(--color-gray-35);
+    margin: 14rpx 20rpx;
+    line-height: 1.5;
+    font-size: 32rpx;
+}
+.pa-dialog-box::before, .pa-dialog-box::after {
+    border: 14rpx solid transparent;
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    height: 0;
+    width: 0;
+    top: 26rpx;
+}
+.pa-ditem-self .pa-dialog-box::before {
+    right: -24rpx;
+}
+.pa-ditem-self .pa-dialog-box::after {
+    border-left-color: var(--color-dialog-self);
+    right: -24rpx;
+}
+.pa-ditem-other .pa-dialog-box::before {
+    left: -24rpx;
+}
+.pa-ditem-other .pa-dialog-box::after {
+    border-right-color: var(--color-white);
+    left: -24rpx;
+}
+
+.pa-ditem-self .pa-dialog-box {
+    background-color: var(--color-dialog-self);
+    margin-left: 0;
+}
+.pa-ditem-other .pa-dialog-box {
+    background-color: var(--color-white);
+    margin-right: 0;
+}
+.pa-dialog-word {
+
+}
+.pa-dialog-type {
+    color: var(--color-blue);
+    margin-right: 5rpx;
+}
+.pa-call-reach-300 {
+    color: var(--color-green);
+}
+.pa-call-reach-410 {
+    color: var(--color-yellow);
+}
+.pa-call-reach-420 {
+    color: var(--color-yellow);
+}
+.pa-call-reach-500 {
+    color: var(--color-green);
+}
+
+
+.pa-dialog-reach {
+    color: var(--color-gray-35);
+    font-size: small;
+    margin-left: 5rpx;
+}
+
+.pa-action-icon {
+    width: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-35);
+}
+.pa-icon-text {
+    color: var(--color-gray-35);
+}
+
+.pa-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pa-action-txt {
+    font-size: 32rpx;
+    margin-left: 10rpx;
+    font-weight: bold;
+}
+
+.pa-goods-action {
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    height: 120rpx!important;
+    box-shadow: 0 -2rpx 2rpx 2rpx rgba(200,200,200,0.2);
+}

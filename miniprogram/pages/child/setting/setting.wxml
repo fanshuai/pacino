@@ -1,0 +1,29 @@
+<van-cell-group border="{{false}}">
+    <van-cell wx:if="{{logged}}" border="{{false}}" size="large" title="登录设备" value-class="pa-font-mono" value="{{devices}}" url="{{pages.PSettingDevice}}" is-link clickable />
+    <button wx:else class="pa-btn-reset pa-wxopen-cell-btn" hover-class="none" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllow" data-url="{{pages.PSettingDevice}}">
+        <van-cell border="{{false}}" size="large" is-link clickable>
+            <view slot="title" style="text-align:left;">登录设备</view>
+            <text class="pa-font-mono">**</text>
+        </van-cell>
+    </button>
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <button class="pa-btn-reset pa-wxopen-cell-btn" hover-class="none" open-type="feedback">
+        <van-cell size="large" clickable>
+            <view slot="title" style="text-align:left;">意见反馈</view>
+            <van-icon slot="right-icon" name="info-o" />
+        </van-cell>
+    </button>
+    <button class="pa-btn-reset pa-wxopen-cell-btn" hover-class="none" open-type="contact">
+        <van-cell border="{{false}}" size="large" clickable>
+            <view slot="title" style="text-align:left;">客服会话</view>
+            <van-icon slot="right-icon" name="service-o" />
+        </van-cell>
+    </button>
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell size="large" title="关于" value-class="pa-font-mono" value="版本 {{version}}" url="{{pages.PSettingAbout}}" is-link clickable />
+    <van-cell border="{{false}}" size="large" title-class="pa-font-mono pa-contact-mail" title="contact@ifand.com" label="有疑问或建议，可邮件联系我们" center>
+        <van-icon slot="right-icon" name="envelop-o" />
+    </van-cell>
+</van-cell-group>

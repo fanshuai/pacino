@@ -1,0 +1,8 @@
+<van-cell-group border="{{false}}">
+    <van-field value="{{remark}}" placeholder="请输入..."
+               border="{{false}}" bind:change="onChange" bind:confirm="submit" use-button-slot hold-keyboard focus>
+        <van-button slot="button" size="small" type="primary" bind:tap="submit">完成</van-button>
+    </van-field>
+</van-cell-group>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

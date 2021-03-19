@@ -1,0 +1,26 @@
+.pa-label-user  {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 160rpx;
+}
+
+.pa-label-user .pa-user-name {
+    color: var(--color-gray-55);
+    margin-left: 20rpx;
+    font-weight: bold;
+    font-size: 42rpx;
+    line-height: 1.2;
+}
+
+.pa-label-user .pa-user-gender {
+    margin-left: 10rpx;
+    font-weight: bold;
+    font-size: 36rpx;
+}
+
+.pa-get-wxphone-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

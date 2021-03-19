@@ -1,0 +1,28 @@
+.van-swipe-cell__right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 200rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    background-color: var(--color-red);
+}
+
+.pa-add-phone {
+    margin-top: 50rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pa-add-phone-word {
+    margin-top: 50rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-blue);
+}

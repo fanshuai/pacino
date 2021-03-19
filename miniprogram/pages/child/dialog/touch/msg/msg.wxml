@@ -1,0 +1,15 @@
+<van-cell-group border="{{false}}">
+    <van-field type="textarea" maxlength="200" value="{{message}}" border="{{false}}" confirm-type="send"  placeholder="请输入..."
+               bind:change="onChange" bind:confirm="submit" autosize="{{autosize}}" hold-keyboard show-word-limit focus>
+    </van-field>
+</van-cell-group>
+<view class="pa-msg-submit">
+    <view style="width: 680rpx;">
+        <van-button icon="chat" type="primary" loading="{{loading}}" loading-type="spinner" loading-text="发送中..." bind:tap="submit" plain block>发送</van-button>
+    </view>
+</view>
+<view class="pa-msg-limit">
+    <text class="pa-color-blue">如果对方未回复，最多可发送三条消息。</text>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

@@ -1,0 +1,21 @@
+<van-cell-group border="{{false}}">
+    <van-field size="large" type="number" maxlength="11" label="手机号" placeholder="请输入手机号" bind:change="changePhone" right-icon="info-o" bind:click-icon="phoneInfo" />
+    <van-field border="{{false}}" size="large" type="number" maxlength="6" label="短信验证码" placeholder="请输入验证码" bind:change="changeCode" use-button-slot center>
+        <van-button wx:if="{{counter === 0}}" slot="button" size="small" type="primary" bind:tap="sendCode">发送验证码</van-button>
+        <van-button wx:if="{{counter > 0}}" slot="button" size="small" type="primary" plain>
+            <text class="pa-font-mono">{{counter}}</text> 秒后可重发
+        </van-button>
+    </van-field>
+</van-cell-group>
+<view class="pa-phone-submit">
+    <view style="width: 680rpx;">
+        <van-button icon="phone-o" type="primary" bind:tap="submit" plain block>确认添加</van-button>
+    </view>
+</view>
+<view class="pa-phone-submit">
+    <view style="width: 680rpx;">
+        <van-button icon="wechat" type="default" open-type="getPhoneNumber" bind:getphonenumber="getPhoneNumber" plain block>获取微信手机号</van-button>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

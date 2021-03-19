@@ -1,0 +1,56 @@
+<view class="pa-call">
+    <view class="pa-call-info">
+        <view style="margin-top: 20rpx;">
+            <van-image image-class="pa-avatar-radius" width="160rpx" height="160rpx" fit="cover" src="{{avatar}}" use-loading-slot>
+                <van-loading slot="loading" type="spinner" />
+            </van-image>
+        </view>
+        <view class="pa-name-break pa-call-other-name">{{name}}</view>
+    </view>
+    <view class="pa-call-info">
+        <view class="pa-call-phone-info">
+            <block wx:if="{{phone}}">
+                <view class="pa-color-gray-55">将转接至我的主手机号</view>
+                <view class="pa-font-bold pa-color-blue pa-font-mono" bind:tap="goDialogPhone">{{phone}}</view>
+            </block>
+            <view wx:else class="pa-call-phone-add">
+                <van-button icon="phone-o" size="small" type="warning" open-type="getPhoneNumber" bind:getphonenumber="getPhoneNumber" plain round block>
+                    <text>请先绑定手机号</text>
+                </van-button>
+            </view>
+        </view>
+        <view class="pa-call-flow">
+            <block wx:if="{{loading && showNum}}">
+                <view class="pa-call-flow-one pa-font-bold">请接听以下号码来电</view>
+                <view class="pa-call-flow-two pa-font-bold pa-font-mono pa-color-theme">{{showNum}}</view>
+            </block>
+            <block wx:else>
+                <view class="pa-call-flow-one">请先接听来电</view>
+                <view class="pa-call-flow-two">随后自动呼叫对方</view>
+            </block>
+            <view class="pa-call-word">通话平台转接 保护号码隐私</view>
+        </view>
+    </view>
+    <view class="pa-call-info">
+        <view class="pa-call-submit">
+            <van-button wx:if="{{phone}}" size="large" icon="phone" color="linear-gradient(to right, #0F9D58, #52BE80, #0F9D58)"
+                        disabled="{{loading}}" loading="{{loading}}" loading-type="spinner" loading-text="{{callStatus}}..." bind:tap="submit" round block>
+                <text class="pa-font-bold">{{callStatus}}</text>
+            </van-button>
+            <van-button wx:else size="large" icon="phone" color="linear-gradient(to right, #0F9D58, #52BE80, #0F9D58)"
+                        open-type="getPhoneNumber" bind:getphonenumber="getPhoneNumber" round block>
+                <text class="pa-font-bold">{{callStatus}}</text>
+            </van-button>
+        </view>
+        <view class="pa-call-extra pa-safe-bottom">
+            <block wx:if="{{callEnd && callSummary}}">
+                <view class="pa-call-end-{{callReach}}">{{callSummary}}</view>
+            </block>
+            <block wx:else>
+                <view class="pa-call-price">每次通话限时三分钟</view>
+            </block>
+        </view>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

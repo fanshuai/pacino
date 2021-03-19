@@ -1,0 +1,22 @@
+<van-cell-group border="{{false}}">
+    <van-cell wx:if="{{!info.open}}" size="large" title-class="pa-color-yellow" title="已关闭" label="他人无法查找到我" arrow-direction="left" is-link clickable center>
+        <view class="pa-color-green" catch:tap="upStatus">重新开启</view>
+    </van-cell>
+    <van-cell size="large" icon="qr" title="{{info.scened || '场景码'}}" value-class="pa-font-mono" value="{{info.fmt}}" bind:tap="goReview" is-link clickable />
+    <van-cell size="large" icon="label-o" title="别名" value="{{info.title || ''}}" value-class="pa-cell-value-break" bind:tap="goTitle" is-link clickable />
+</van-cell-group>
+<van-cell-group border="{{false}}" wx:if="{{info.open}}" custom-class="pa-cell-group-top">
+    <van-cell size="large" icon="edit" title="自定义签名" value="{{info.selfdom}}" value-class="pa-cell-value-break" bind:tap="goSelfdom" is-link clickable />
+</van-cell-group>
+<van-cell-group border="{{false}}" wx:if="{{info.open}}" custom-class="pa-cell-group-top">
+    <van-cell size="large" icon="clock-o" title="添加日期" value-class="pa-font-mono" value="{{info.bound}}" />
+    <van-cell size="large" icon="eye-o" title="被查找次数" value-class="pa-font-mono" value="{{info.views}}" />
+</van-cell-group>
+<van-cell-group border="{{false}}" custom-class="pa-cell-group-top">
+    <van-cell size="large" icon="setting-o" title="操作" arrow-direction="down" bind:tap="openAction" is-link clickable />
+</van-cell-group>
+<van-action-sheet show="{{show}}" actions="{{actions}}" cancel-text="取消" close-on-click-overlay
+                  bind:close="closeAction" bind:cancel="closeAction" bind:select="selectAction"
+        description="{{info.open ? '关闭后，信息仍保留，但无法被查找。' : '目前关闭状态，开启后才能使用。'}}" />
+<van-dialog id="van-dialog" confirm-button-color="#F49000" />
+<van-toast id="van-toast" />

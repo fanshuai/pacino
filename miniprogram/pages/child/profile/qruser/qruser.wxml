@@ -1,0 +1,20 @@
+<block wx:if="{{!rsmAllowed}}">
+    <view class="pa-notice-bar" bind:tap="reqSubscribeMsg" style="position: fixed;">订阅提醒消息，并选择总是保持允许？</view>
+</block>
+<view class="pa-qrcode-image">
+    <van-image width="600rpx" height="800rpx" fit="contain" src="{{qrimg}}" bind:tap="openAction" use-loading-slot>
+        <van-loading slot="loading" type="spinner" />
+    </van-image>
+    <view class="pa-qrcode-image-menu">
+        <button class="pa-btn-reset pa-qrcode-image-menu-item" hover-class="none" bind:tap="saveImage">
+            <van-button icon="photo" type="default" block round />
+        </button>
+        <button class="pa-btn-reset pa-qrcode-image-menu-item" hover-class="none" open-type="share">
+            <van-button icon="share" type="default" block round />
+        </button>
+    </view>
+</view>
+<van-action-sheet show="{{show}}" actions="{{actions}}" cancel-text="取消" close-on-click-overlay
+                  bind:close="closeAction" bind:cancel="closeAction" bind:select="selectAction" />
+<van-dialog id="van-dialog" confirm-button-color="#F49000" />
+<van-toast id="van-toast" />

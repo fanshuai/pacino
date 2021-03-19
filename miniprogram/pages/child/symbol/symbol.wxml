@@ -1,0 +1,22 @@
+<view class="pa-container">
+    <view wx:if="{{symbols.length === 0}}" style="width: 750rpx; background-color: white;">
+        <van-divider contentPosition="center" customStyle="padding:50rpx;" dashed>暂无场景码</van-divider>
+    </view>
+    <view wx:else style="width: 750rpx;">
+        <van-cell-group border="{{false}}">
+            <van-cell wx:for="{{symbols}}" wx:key="symbol" title-class="pa-cell-value-break" title="{{item.title || item.scened}}"
+                      url="{{pages.PSymbolView}}?title={{item.title || item.scened}}&symbol={{item.symbol}}" use-label-slot is-link clickable center>
+                <view class="pa-font-mono{{item.open ? '' : ' pa-color-yellow'}}">{{item.tail}}</view>
+                <view slot="label">
+                    <text wx:if="{{item.title}}" class="pa-color-gray-55">{{item.scened}} </text>
+                    <text>{{item.bound}}</text>
+                </view>
+            </van-cell>
+        </van-cell-group>
+    </view>
+    <view class="pa-add-symbol pa-safe-bottom" style="width: 680rpx;">
+        <van-button icon="like" type="primary" bind:tap="goScan" plain block>已收到周边商品？扫码绑定</van-button>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

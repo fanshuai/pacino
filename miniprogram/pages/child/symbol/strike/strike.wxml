@@ -1,0 +1,17 @@
+<van-cell-group border="{{false}}">
+    <van-cell size="large" title="{{scened || '场景码'}}" value-class="pa-font-mono" value="{{fmt}}" />
+    <van-cell size="large" title="手机号" value-class="pa-font-mono" value="{{phone}}" />
+    <van-field border="{{false}}" size="large" type="number" maxlength="6" label="短信验证码" placeholder="请输入验证码" bind:change="changeCode" use-button-slot center>
+        <van-button wx:if="{{counter === 0}}" slot="button" size="small" type="primary" bind:tap="apiSendCode">发送验证码</van-button>
+        <van-button wx:if="{{counter > 0}}" slot="button" size="small" type="primary" plain>
+            <text class="pa-font-mono">{{counter}}</text> 秒后可重发
+        </van-button>
+    </van-field>
+</van-cell-group>
+<view class="pa-strike-submit">
+    <view style="width: 680rpx;">
+        <van-button icon="close" type="warning" bind:tap="submit" plain block>确认删除</van-button>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

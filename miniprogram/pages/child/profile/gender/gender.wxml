@@ -1,0 +1,11 @@
+<van-radio-group value="{{gender}}">
+    <van-cell-group border="{{false}}" wx:if="{{genders.length > 0}}">
+        <block wx:for="{{genders}}" wx:key="index">
+            <van-cell size="large" title="{{item.v}}" data-gender="{{item.k}}" bind:click="onClick" clickable>
+                <van-radio icon-size="22px" slot="right-icon" checked-color="#07c160" name="{{item.k}}" />
+            </van-cell>
+        </block>
+    </van-cell-group>
+</van-radio-group>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

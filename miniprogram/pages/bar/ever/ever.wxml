@@ -1,0 +1,50 @@
+<block wx:if="{{!logged}}">
+    <include src="anon.wxml"/>
+</block>
+<view wx:else class="pa-convert-view">
+    <block wx:if="{{!rsmAllowed && convs.length && (!query)}}">
+        <van-notice-bar left-icon="volume-o" mode="closeable" scrollable="{{false}}" color="#F49000" text="订阅提醒消息，并选择总是保持允许？" bind:tap="reqSubscribeMsg" />
+    </block>
+    <view class="pa-convert-search">
+        <van-search value="{{query}}" placeholder="搜索" bind:change="onChange" bind:search="onSearch" bind:clear="onClear" />
+    </view>
+    <view class="pa-convert-content">
+        <scroll-view scroll-y="true" class="pa-convert-scroll" enable-back-to-top>
+            <van-divider wx:if="{{convs.length === 0}}" contentPosition="center" customStyle="padding:50rpx;" dashed>
+                <text>{{(!noCReason || refreshing) ? '加载中...' : noCReason}}</text>
+            </van-divider>
+            <van-cell-group wx:else border="{{false}}">
+                <van-cell wx:for="{{convs}}" wx:key="convid" size="large" data-convid="{{item.convid}}" bind:tap="goDialog" use-label-slot clickable>
+                    <text slot="right-icon" class="pa-font-mono pa-convert-timer">{{item.timer}}</text>
+                    <view class="pa-convert-label" slot="label">
+                        <van-image image-class="pa-avatar-radius" fit="cover" width="96rpx" height="96rpx" src="{{item.avatar}}" use-loading-slot>
+                            <van-loading slot="loading" type="spinner" />
+                        </van-image>
+                        <view class="pa-convert-info">
+                            <view class="pa-convert-row">
+                                <text class="pa-name-break">{{item.remark || item.name || '**'}}</text>
+                            </view>
+                            <view class="pa-convert-row pa-color-gray-88">
+                                <text wx:if="{{item.block}}" class="pa-color-yellow">[已屏蔽] </text>
+                                <text wx:if="{{item.unread}}" class="pa-color-yellow-light">[{{item.unread}}未读] </text>
+                                <text>{{item.memo}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </van-cell>
+                <van-cell border="{{false}}" size="large">
+                    <view class="pa-conv-amount">
+                        <block wx:if="{{convAmt.count > convAmt.limit}}">
+                            仅显示最近 <text class="pa-font-mono">{{convAmt.limit}}</text> 条{{query ? '搜索结果' : '对话记录'}}
+                        </block>
+                        <block wx:else>
+                            已显示全部 <text class="pa-font-mono">{{convAmt.count}}</text> 条{{query ? '搜索结果' : '对话记录'}}
+                        </block>
+                    </view>
+                </van-cell>
+            </van-cell-group>
+        </scroll-view>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

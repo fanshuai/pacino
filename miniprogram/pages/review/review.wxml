@@ -1,0 +1,86 @@
+<view wx:if="{{!isDone}}" class="pa-loading-center-top">
+    <van-loading type="spinner" vertical>{{LoadingMsg}}</van-loading>
+</view>
+<view wx:elif="{{isFail}}" class="pa-review-center">
+    <view class="pa-review-result">
+        <van-icon name="warning" color="#FFBE00" size="150rpx" />
+        <view class="pa-review-reason">{{qrQuery.reason}}</view>
+    </view>
+    <view class="pa-review-gohome">
+        <van-button type="default" bind:click="toBack" block plain round>我知道了</van-button>
+    </view>
+</view>
+<view wx:elif="{{isPre}}" class="pa-review-center">
+    <view class="pa-review-result">
+        <van-icon name="qr" color="#0F9D58" size="150rpx" />
+        <view class="pa-font-mono">{{qrQuery.code}}</view>
+        <view class="pa-review-reason">{{qrQuery.by}}待激活绑定</view>
+    </view>
+    <view class="pa-review-qrbind">
+        <van-button wx:if="{{logged}}" type="primary" bind:click="gotoQRBind" block round>确认激活绑定</van-button>
+        <van-button wx:else type="primary" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllowGoQRBind" block round>确认激活绑定</van-button>
+        <view style="margin-top: 50rpx;">
+            <van-button type="default" bind:click="toBack" block plain round>暂不绑定</van-button>
+        </view>
+    </view>
+</view>
+<view wx:else class="pa-review-center">
+    <view class="pa-review-info">
+        <van-image image-class="pa-review-avatar" width="150rpx" height="150rpx" fit="cover" src="{{qrQuery.avatar}}" use-loading-slot>
+            <van-loading slot="loading" type="spinner" />
+        </van-image>
+        <view class="pa-review-name pa-name-break">{{qrQuery.name}}</view>
+        <view class="pa-review-by">
+            <view>通过{{qrQuery.by}}<text class="pa-font-mono">[{{qrQuery.code}}]</text>查找</view>
+        </view>
+        <view class="pa-review-selfdom" wx:if="{{qrQuery.selfdom}}">
+            <text>{{qrQuery.selfdom}}</text>
+        </view>
+    </view>
+    <view class="pa-review-action">
+        <van-grid border="{{true}}" column-num="2" clickable>
+            <van-grid-item use-slot>
+                <view wx:if="{{logged}}" class="pa-grid-action pa-color-gray-35" bind:tap="gotoMsg">
+                    <van-icon name="chat" size="42rpx" />
+                    <text class="pa-grid-action-txt">发消息</text>
+                </view>
+                <button wx:else class="pa-btn-reset pa-grid-action pa-color-gray-35" hover-class="none" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllowGoMsg">
+                    <van-icon name="chat" size="42rpx" />
+                    <text class="pa-grid-action-txt">发消息</text>
+                </button>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <view wx:if="{{logged}}" class="pa-grid-action pa-color-theme" bind:tap="gotoCall">
+                    <van-icon name="phone" size="42rpx" />
+                    <text class="pa-grid-action-txt">打电话</text>
+                </view>
+                <button wx:else class="pa-btn-reset pa-grid-action pa-color-theme" hover-class="none" open-type="getUserInfo" bindgetuserinfo="userInfoScopeAllowGoCall">
+                    <van-icon name="phone" size="42rpx" />
+                    <text class="pa-grid-action-txt">打电话</text>
+                </button>
+            </van-grid-item>
+        </van-grid>
+        <van-cell-group border="{{false}}">
+            <van-cell wx:if="{{logged && qrQuery.convid}}" size="large" border="{{true}}" bind:tap="goDialog" clickable>
+                <view slot="title" class="pa-action-icon">
+                    <van-icon name="comment-o" />
+                    <text class="pa-action-txt">历史对话消息</text>
+                </view>
+            </van-cell>
+            <van-cell size="large" border="{{false}}" data-spuid="{{qrQuery.spuid}}" bind:tap="goStoreMPA" clickable>
+                <view slot="title" class="pa-action-icon">
+                    <block wx:if="{{qrQuery.spuid}}">
+                        <van-icon name="shop-o" />
+                        <text class="pa-action-txt">获取同款{{qrQuery.by}}</text>
+                    </block>
+                    <block wx:else>
+                        <van-icon name="shop-collect-o" />
+                        <text class="pa-action-txt">发现有趣周边商品</text>
+                    </block>
+                </view>
+            </van-cell>
+        </van-cell-group>
+    </view>
+</view>
+<van-dialog id="van-dialog" confirm-button-color="#09BB07" />
+<van-toast id="van-toast" />

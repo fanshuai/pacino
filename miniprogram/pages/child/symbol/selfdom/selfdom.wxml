@@ -1,0 +1,10 @@
+<van-cell-group border="{{false}}">
+    <van-field type="textarea" maxlength="50" value="{{selfdom}}" border="{{false}}" placeholder="50个字以内"
+               bind:change="onChange" bind:confirm="submit" autosize="{{autosize}}" hold-keyboard show-word-limit focus>
+    </van-field>
+</van-cell-group>
+<view class="pa-selfdom-submit">
+    <view style="width: 680rpx;">
+        <van-button icon="edit" type="primary" bind:tap="submit" plain block>完成</van-button>
+    </view>
+</view>

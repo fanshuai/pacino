@@ -1,0 +1,9 @@
+.pa-avatar-title {
+    font-size: 12pt;
+    color: var(--color-black);
+}
+.pa-user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
